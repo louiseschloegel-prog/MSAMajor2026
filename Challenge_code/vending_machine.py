@@ -21,7 +21,7 @@ def main():
             
             continue
 
-    print(f"Change owed: {amount_due * -1}")
+    print(f"\nAmount due: 0\nChange owed: {amount_due * -1}")
 
 
 main()
