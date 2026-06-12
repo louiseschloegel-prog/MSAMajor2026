@@ -11,6 +11,10 @@ def main():
     print("Vending Machine\n -----------")
     while (True):
         print(f"Amount due: {amount_due}")
+        try:
+            input_coins = int(input("\nInsert Coin: "))
+        except:
+            continue
         input_coins = int(input("\nInsert Coin: "))
         if input_coins == 1 or input_coins == 5 or input_coins == 10 or input_coins == 25:
             amount_due = amount_due - input_coins
