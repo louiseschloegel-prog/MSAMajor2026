@@ -62,7 +62,7 @@ class Student():
 
 
     def print_student_data(self):
-        print(f"{self.__first_name} {self.__last_name}")
+        print(f"\n{self.__first_name} {self.__last_name}")
         print(f"Class level: {self.get_class_level()}, Major: {self.__major}")
         print(f"GPA: {self.__GPA}, ID: {self.__ID_number}")
 
