@@ -2,6 +2,7 @@ import flask
 from flask import request, jsonify
 import student_generator_v2 as sg
 
+
 # create a flask app object
 app = flask.Flask(__name__)
 
@@ -16,11 +17,20 @@ Output: list of student dictionaries that match the search criteria
 """
 
 def search_dictionary_list(search_key, search_value):
+    #get the list of students
     list_of_search = []
     student_dictionaries = sg.get_student_dictionaries()
+    #loop through the dictionaries
     for student in student_dictionaries:
-        if search_value.lower() == student_dictionaries[search_key]:
+        #print(student)
+        #print(f"{search_value.lower() == student[search_key].lower()}")
+        #input()
+        if search_value.lower() == student[search_key].lower():
+            # add the student to the list
             list_of_search.append(student)
+            #print(list_of_search)
+    # return the list of students
+
     return list_of_search
         
 # create a route/view for the home page of the application
@@ -30,14 +40,38 @@ def index():
 
 # create end point for the functions we will create 
 #create a route to return all student data
+
 @app.route('/api/students/all', methods = ['GET'])
 def api_all():
     # get student dictionaries
     student_dictionaries = sg.get_student_dictionaries()
     return jsonify(student_dictionaries)
-# run the application
+
 
 #create a route that returns students in a specific major
+#api/majors/majors
+@app.route('/api/major/<string:major>', methods=['GET'])
+def api_students_by_major(major:str):
+    #call the search function to egt students with this major
+    major_students = search_dictionary_list("major", major)
+    return jsonify(major_students)
+
+
+
 # create a route that returns studennts of a specific class (freshman, sophmore, junior, senior)
+#api/class/what we are looking for
+@app.route('/api/class/<string:student_class>', methods=['GET'])
+def api_students_by_class(student_class:str):
+    #call the search function to get students from that class
+    class_students = search_dictionary_list("class", student_class)
+    return jsonify(class_students)
+
+
 # create a route that returns a specific student by ID
+@app.route('/api/student/id/<string:id>', methods=['GET'])
+def api_get_student_by_id(id:str):
+    student = search_dictionary_list("id", id)
+    return jsonify(student)
+
+# run the application
 app.run(debug=True)

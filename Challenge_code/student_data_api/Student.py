@@ -8,13 +8,13 @@ class Student():
         self.__GPA = GPA
         self.__ID_number = ID_number
 
-    def get_First_name(self):
+    def get_First_name(self) ->str:
         return self.__first_name
     def set_First_name(self, new_first_name:str):
         self.__first_name = new_first_name
         return
     
-    def get_Last_name(self):
+    def get_Last_name(self) ->str:
         return self.__last_name
     
     def set_Last_name(self, new_last_name:str):
@@ -22,25 +22,25 @@ class Student():
         return
 
     
-    def get_major(self):
+    def get_major(self) ->str:
         return self.__major
     def set_major(self, new_major:str):
         self.__major = new_major
         return
 
-    def get_credit_hours(self):
+    def get_credit_hours(self) ->str:
         return self.__credit_hours
     def set_credit_hours(self, new_credit_hours:float):
         self.__credit_hours = new_credit_hours
         return
     
-    def get_GPA(self):
+    def get_GPA(self) -> float:
         return self.__GPA
     def set_GPA(self, new_GPA):
         self.__GPA = new_GPA
         return
     
-    def get_ID_number(self):
+    def get_ID_number(self) -> str:
         return self.__ID_number
     
 

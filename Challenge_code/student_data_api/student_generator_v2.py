@@ -37,7 +37,6 @@ def load_students() -> list[Student]:
         First_name = student_info[0]
         last_name = student_info[1]
         major = student_info[2]
-        
         student_ID = student_info[5].strip()
         try:
             gpa = float(student_info[4])
