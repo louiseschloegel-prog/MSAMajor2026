@@ -73,5 +73,25 @@ def api_get_student_by_id(id:str):
     student = search_dictionary_list("id", id)
     return jsonify(student)
 
+#create a route to return a list of unique majors
+@app.route('/api/majors/all', methods=['GET'])
+def get_all_majors():
+    #create a list to store majors 
+    major_list = []
+    #get a list for student dictionaries
+    student_dictionaries = sg.get_student_dictionaries()
+
+    # use a for loop to iterate thriugh the stdent list
+    for student in student_dictionaries:
+
+    #add major to the mjor list if the major is not already in the list
+        if student['major'] not in major_list:
+            major_list.append(student['major'])
+
+    #sort the list
+    major_list.sort
+    #return the list
+    return major_list
+
 # run the application
 app.run(debug=True)
