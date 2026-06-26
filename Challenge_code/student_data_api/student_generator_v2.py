@@ -1,5 +1,19 @@
 from Student import Student
+from datetime import datetime
 
+"""
+function to write an arror message to a log file
+Input: (str) error message 
+Output: None
+"""
+def write_to_error_log(message:str) -> None:
+    the_date = datetime.now()
+    #open the log file in append mode: error_log,txt
+    with open("error_log.txt", "a") as log_file:
+        log_file.write(f"{the_date}: {message}\n")
+        # write an error message to the file in the format
+        # 6/26/2026: Error in data file on line 5
+    return
 """
 Function to retun a list of student objects 
 Input: none
@@ -28,6 +42,7 @@ def load_students() -> list[Student]:
         # if error in format then write to a log file
         try:
             if len(student_info) != 6:
+                write_to_error_log(f"Error on line {line_number} of the file. Data has {len(student_info)} items but should have 6.")
                 raise Exception(f"Error on line {line_number} of the file. Data has {len(student_info)} items but should have 6.\n")
         except Exception as error:
             continue
@@ -43,6 +58,7 @@ def load_students() -> list[Student]:
             credits = int(student_info[3])
         except:
             print(f"Error on line {line_of_data} of this file")
+            write_to_error_log(f"Error on line {line_of_data} of this file: credit_hours or gpa have incorrect format")
             continue
         
         student = Student(First_name, last_name, major, credits, gpa, student_ID)

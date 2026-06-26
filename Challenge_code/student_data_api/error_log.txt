@@ -1,0 +1,3 @@
+2026-06-26 10:12:39.062721: Error on line 2 of the file. Data has 5 items but should have 6.
+2026-06-26 10:12:39.078260: Error on line Alan,Moran,Accounting,5o,3.19,171552
+ of this file: credit_hours or gpa have incorrect format

@@ -12,4 +12,25 @@
         </select>
         <input type="submit" value="submit">
     </form>
+
+    {% if result_list %} 
+        <h2>{{ major }} Majors</h2>
+        {% for student in result_list %}
+            <div class="post">
+                <h2>{{ student['first_name'] }} {{ student['last_name'] }}</h2>
+                <d1 class="student-details">
+                    <dt>Major</dt>
+                    <dd>{{ student['major'] }}</dd>
+                    <dt>Class</dt>
+                    <dd>{{ student['class'] }}</dd>
+                    <dt>GPA</dt>
+                    <dd>{{ student['gpa'] }}</dd>
+                    <dt>ID</dt>
+                    <dd>{{ student['id'] }}</dd>
+
+                </d1>
+
+            </div>
+        {% endfor %}
+    {% endif %}
 {% endblock %}

@@ -50,7 +50,7 @@ def api_all():
 
 #create a route that returns students in a specific major
 #api/majors/majors
-@app.route('/api/major/<string:major>', methods=['GET'])
+@app.route('/api/majors/<string:major>', methods=['GET'])
 def api_students_by_major(major:str):
     #call the search function to egt students with this major
     major_students = search_dictionary_list("major", major)
