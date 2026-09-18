@@ -4,18 +4,36 @@
 
 def main():
     amount_due = 50
-    nickel: 5
-    dime: 10
+    nickel = 5
+    dime = 10
     quarter = 25
     penny = 1
     print("Vending Machine\n -----------")
     while (True):
-        print(f"Amount due: {amount_due}")
-        input_coins = int(input("\n Insert Coin: "))
-        if input_coins == 1 or input_coins == 5 or input_coins == 10 or input_coins == 25:
-            amount_due = amount_due - input_coins
-        continue
-        
+        try:
+            print(f"Amount due: {amount_due}")
+            input_coins = (int(input("\nInsert Coin: ")))
+            if input_coins == 1 or input_coins == 5 or input_coins == 10 or input_coins == 25:
+                amount_due = amount_due - input_coins
+                if amount_due <= 0:
+                    amount_due = amount_due * -1
+                    print(f"Change Due: {amount_due}")
+                    break
+                continue
+            if input_coins == str or float:
+                        print("ERROR: PLEASE ENTER REAL MONEY") 
+                        continue
+            else:
+                continue
+
+
+        except:
+             print("ERROR: PLEASE ENTER REAL MONEY")
+             continue
+        exit()
+    
+            
+     
         # elif amount_due <= 0:
         #     print(f"Change owed: {amount_due}")
 
